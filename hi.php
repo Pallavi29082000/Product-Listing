@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        color: #333;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 32px;
+        border-bottom: 1px solid #ddd;
+        background: #fff;
+    }
+
+    .logo {
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .nav {
+        display: flex;
+        gap: 24px;
+    }
+
+    .nav a {
+        text-decoration: none;
+        color: #555;
+        font-size: 14px;
+    }
+
+    .nav a:hover {
+        color: #000;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .search-box {
+        position: relative;
+    }
+
+    .search-box input {
+        padding: 6px 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 16px;
+        outline: none;
+    }
+
+    .cart {
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .breadcrumb {
+        font-size: 12px;
+        color: #666;
+        padding: 10px 32px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+    }
+
+    .breadcrumb a {
+        text-decoration: none;
+        color: #666;
+    }
+
+    .breadcrumb span {
+        font-weight: 600;
+        color: #000;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 40px 20px;
+        background: #f0f0f0;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+        line-height: 1.4;
+        font-weight: 600;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .product-card {
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: 0.3s;
+    }
+    .card-top {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .add-btn {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .add-btn:hover {
+        background: green;
+        color: white;
+    }
+
+    .card-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 180px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-img img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-top: 10px;
+    }
+
+    .title-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title-price h3 {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .price {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        background: #fff;
+        padding: 5px;
+        border-radius: 4px;
+    }
+
+    .category {
+        font-size: 12px;
+        color: #777;
+    }
+
+    .filter-bar {
+        padding: 12px 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .filter-nav a {
+        text-decoration: none;
+        font-size: 15px;
+        color: #999;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .filter-nav a.active {
+        color: #000;
+        font-weight: 600;
+    }
+
+    .filter-nav a:hover {
+        color: #333;
+        text-decoration: underline;
+    }
+
+    .nav a:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+
+
+    .filter-btn {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .filter-btn:hover {
+        background: green;
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .nav {
+            display: none;
+        }
+
+        .hero h2 {
+            font-size: 20px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container-section">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">Logo</div>
+            <nav class="nav">
+                <a href="#">Shop</a>
+                <a href="#">About</a>
+                <a href="#">Giving</a>
+                <a href="#">Proud</a>
+                <a href="#">Pro collection</a>
+            </nav>
+            <div class="header-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Search here..">
+                </div>
+                <div class="cart">Cart (2)</div>
+            </div>
+        </header>
+        <!-- End Header Section -->
+        <!-- Breadcrumb Section -->
+        <div class="breadcrumb">
+            Home / Toothbrushes / <span>Humble Brush Bamboo</span>
+        </div>
+        <!-- End Breadcrumb Section -->
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Shop environment <br> friendly quality goods</h2>
+        </section>
+        <!-- End Hero Section -->
+        <!-- Filteration Section -->
+        <div class="filter-bar">
+            <div class="filter-nav">
+                <a href="#" class="active">All Products</a>
+                <a href="#">Bamboo</a>
+                <a href="#">Plant-based</a>
+                <a href="#">Toothpastes</a>
+                <a href="#">Floss</a>
+            </div>
+            <button class="filter-btn">Filters <i class="fa fa-caret-down"></i></button>
+        </div>
+        <!-- End Filteration Section -->
+        <!-- Product Card Section -->
+        <main class="container">
+            <div id="product-grid" class="grid"></div>
+        </main>
+        <!-- End Product Card Section -->
+    </div>
+    <script>
+    const productGrid = document.getElementById("product-grid");
+
+    async function fetchProducts() {
+        try {
+            const res = await fetch("https://fakestoreapi.com/products");
+            const products = await res.json();
+
+            productGrid.innerHTML = products.map(product => `
+        <div class="card-wrapper">
+          <div class="product-card">
+            <div class="card-top">
+              <button class="add-btn"><i class="fa-regular fa-cart-shopping"></i>Add to Cart</button>
+            </div>
+            <div class="card-img">
+              <img src="${product.image}" alt="${product.title}">
+            </div>
+          </div>
+
+          <!-- Info outside the card -->
+          <div class="card-info">
+            <div class="title-price">
+              <h3>${product.title}</h3>
+              <span class="price">€${product.price.toFixed(2)}</span>
+            </div>
+            <p class="category">${product.category}</p>
+          </div>
+        </div>
+      `).join("");
+        } catch (err) {
+            console.error("Error fetching products:", err);
+            productGrid.innerHTML = `<p style="color:red;">Failed to load products.</p>`;
+        }
+    }
+
+    fetchProducts();
+    </script>
+
+</body>
+
+</html>
